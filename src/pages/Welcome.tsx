@@ -67,7 +67,6 @@ const style = StyleSheet.create({
     image: {
         width: 292,
         height: 284,
-        sdugh,
     },
 
 });
