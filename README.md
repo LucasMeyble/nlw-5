@@ -37,3 +37,5 @@ Após o fim da instalação, feche e abra o powershell como administrador novame
 </strong>
 
 Caso retorne as versões do Node e npm, sua instalação foi um sucesso.
+
+<h2> Yarn </h2>
