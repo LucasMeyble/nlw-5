@@ -15,5 +15,12 @@ Escolhido o shell, vamos começar a instalação:
   <li>O Powershell trabalha com um esquema de autorizações (conhecido como Execution Policy) para execução de scripts e, por isso, precisamos verificar se o presente no sistema está compatível com o que o Chocolatey precisa. Execute o seguinte comando: <strong>Get-ExecutionPolicy</strong></li>
 </ul>
 
-caso ele retorne <em>Restricted</em>, execute o comando: 
-Set-ExecutionPolicy RemoteSigned
+caso ele retorne <em>"Restricted"</em>, execute o comando: 
+<strong>Set-ExecutionPolicy RemoteSigned</strong>
+E escolha a opção [A] Sim para Todos
+
+Caso o comando acima apresente Erro, tente usar: <strong>Set-ExecutionPolicy Bypass -Scope Process</strong>
+
+Verifique se alteração de premissão ocorreu com sucesso executando novamente o comando: <strong>Get-ExecutionPolicy</strong>
+
+Alterada a permissão, basta instalar o Chocolatey com o comando: <strong>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</strong>
