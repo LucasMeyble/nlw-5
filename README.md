@@ -12,10 +12,8 @@ Repositório destinado ao programa plantmanager, com desenvolvimento em react-na
 Escolhido o shell, vamos começar a instalação:
 <ul>
   <li>Busque no campo de busca do Windows por Windows Powershell, clique com o botão direito em cima do programa e escolha a opção Executar como administrador.</li>
-  <li>O Powershell trabalha com um esquema de autorizações (conhecido como Execution Policy) para execução de scripts e, por isso, precisamos verificar se o presente no sistema está compatível com o que o Chocolatey precisa. Execute o seguinte comando:</li>
+  <li>O Powershell trabalha com um esquema de autorizações (conhecido como Execution Policy) para execução de scripts e, por isso, precisamos verificar se o presente no sistema está compatível com o que o Chocolatey precisa. Execute o seguinte comando: <strong>Get-ExecutionPolicy</strong></li>
 </ul>
-
-<strong>Get-ExecutionPolicy</strong>
 
 caso ele retorne <em>Restricted</em>, execute o comando: 
 Set-ExecutionPolicy RemoteSigned
