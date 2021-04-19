@@ -24,3 +24,16 @@ Caso o comando acima apresente Erro, tente usar: <strong>Set-ExecutionPolicy Byp
 Verifique se alteração de premissão ocorreu com sucesso executando novamente o comando: <strong>Get-ExecutionPolicy</strong>
 
 Alterada a permissão, basta instalar o Chocolatey com o comando: <strong>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</strong>
+
+Após o fim da instalação, feche e abra o powershell como administrador novamente e execute: <strong>choco -v</strong>
+
+Caso ele retorne a versão do Chocolatey, a instalação foi um sucesso. Para finalizar, basta instalar a versão LTS mais recente do Node com o seguinte comando: <strong>cinst nodejs-lts</strong>
+E escolha a opção [A]ll - yes to all
+
+Após o fim da instalação, feche e abra o powershell como administrador novamente e execute:
+<strong>
+  node -v
+  npm -v
+</strong>
+
+Caso retorne as versões do Node e npm, sua instalação foi um sucesso.
