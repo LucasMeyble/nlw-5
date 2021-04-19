@@ -1,9 +1,6 @@
 # nlw-5
 Repositório destinado ao programa plantmanager, com desenvolvimento em react-native, da nlw #5
 
-<\br>
-<\br>
-
 <h1>Ambiente para React-Native em Windows</h1>
 
 <h2> Node e NPM </h2>
