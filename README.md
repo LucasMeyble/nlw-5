@@ -39,3 +39,14 @@ Após o fim da instalação, feche e abra o powershell como administrador novame
 Caso retorne as versões do Node e npm, sua instalação foi um sucesso.
 
 <h2> Yarn </h2>
+Para instalar o Yarn 1 no Windows siga os seguintes passos, execute o comando no Powershell (como admin): <strong> cinst yarn </strong>
+E escolha a opção [A]ll - yes to all
+Feche e abra o terminal novamente, em seguida rode o comando: <strong>yarn --version</strong>
+Caso retorne a versão do Yarn (acima de 1.0, abaixo de 2.0), a instalação ocorreu com sucesso.
+
+<h2> Expo </h2>
+Para instalar o Expo é bem simples e o passo é o mesmo nos 3 sistemas operacionais.
+
+Com o Node e Yarn instalados, abra o terminal (no Windows, sem ser como admin) e execute: <strong>yarn global add expo-cli</strong>
+Para verificar se a instalação ocorreu com sucesso, execute: <strong>expo --version</strong>
+Se retornar a versão da cli do Expo, a instalação ocorreu com sucesso.
