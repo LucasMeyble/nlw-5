@@ -7,16 +7,6 @@ import colors from '../styles/colors';
 
 export function Welcome(){
 
-    const [visible, setVisible] = useState(false);
-
-    function handleVisibility(){
-        setVisible(true)
-    }
-
-    function handleInvisibility(){
-        setVisible(false)
-    }
-
     return(
 
         <SafeAreaView style={style.conteiner}>
@@ -26,17 +16,13 @@ export function Welcome(){
                 de forma fácil 
             </ Text>
 
-            {
-                visible &&
-                <Image source={wateringImg} style={style.image}/>
-            }
-
+            <Image source={wateringImg} style={style.image}/>
+            
             <Text style={style.subTitle}> 
                 Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
             </Text>
 
-            <Button title="Mostrar Imagem" onPress={handleVisibility}/>
-            <Button title="Ocultar Imagem" onPress={handleInvisibility}/>
+            <Button title=">" />
         </SafeAreaView>
     )
 }
