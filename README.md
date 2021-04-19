@@ -15,38 +15,37 @@ Escolhido o shell, vamos começar a instalação:
   <li>O Powershell trabalha com um esquema de autorizações (conhecido como Execution Policy) para execução de scripts e, por isso, precisamos verificar se o presente no sistema está compatível com o que o Chocolatey precisa. Execute o seguinte comando: <strong>Get-ExecutionPolicy</strong></li>
 </ul>
 
-caso ele retorne <em>"Restricted"</em>, execute o comando: 
-<strong>Set-ExecutionPolicy RemoteSigned</strong>
-E escolha a opção [A] Sim para Todos
+<p>caso ele retorne <em>"Restricted"</em>, execute o comando: <strong>Set-ExecutionPolicy RemoteSigned</strong></p>
+<p>E escolha a opção [A] Sim para Todos</p>
 
-Caso o comando acima apresente Erro, tente usar: <strong>Set-ExecutionPolicy Bypass -Scope Process</strong>
+<p>Caso o comando acima apresente Erro, tente usar: <strong>Set-ExecutionPolicy Bypass -Scope Process</strong></p>
 
-Verifique se alteração de premissão ocorreu com sucesso executando novamente o comando: <strong>Get-ExecutionPolicy</strong>
+<p>Verifique se alteração de premissão ocorreu com sucesso executando novamente o comando: <strong>Get-ExecutionPolicy</strong></p>
 
-Alterada a permissão, basta instalar o Chocolatey com o comando: <strong>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</strong>
+<p>Alterada a permissão, basta instalar o Chocolatey com o comando: <strong>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</strong></p>
 
-Após o fim da instalação, feche e abra o powershell como administrador novamente e execute: <strong>choco -v</strong>
+<p>Após o fim da instalação, feche e abra o powershell como administrador novamente e execute: <strong>choco -v</strong></p>
 
-Caso ele retorne a versão do Chocolatey, a instalação foi um sucesso. Para finalizar, basta instalar a versão LTS mais recente do Node com o seguinte comando: <strong>cinst nodejs-lts</strong>
-E escolha a opção [A]ll - yes to all
+<p>Caso ele retorne a versão do Chocolatey, a instalação foi um sucesso. Para finalizar, basta instalar a versão LTS mais recente do Node com o seguinte comando: <strong>cinst nodejs-lts</strong></p>
+<p>E escolha a opção [A]ll - yes to all</p>
 
-Após o fim da instalação, feche e abra o powershell como administrador novamente e execute:
+<p>Após o fim da instalação, feche e abra o powershell como administrador novamente e execute:
 <strong>
   node -v
   npm -v
-</strong>
+</strong></p>
 
-Caso retorne as versões do Node e npm, sua instalação foi um sucesso.
+<p>Caso retorne as versões do Node e npm, sua instalação foi um sucesso.</p>
 
 <h2> Yarn </h2>
-Para instalar o Yarn 1 no Windows siga os seguintes passos, execute o comando no Powershell (como admin): <strong> cinst yarn </strong>
-E escolha a opção [A]ll - yes to all
-Feche e abra o terminal novamente, em seguida rode o comando: <strong>yarn --version</strong>
-Caso retorne a versão do Yarn (acima de 1.0, abaixo de 2.0), a instalação ocorreu com sucesso.
+<p>Para instalar o Yarn 1 no Windows siga os seguintes passos, execute o comando no Powershell (como admin): <strong> cinst yarn </strong></p>
+<p>E escolha a opção [A]ll - yes to all</p>
+<p>Feche e abra o terminal novamente, em seguida rode o comando: <strong>yarn --version</strong></p>
+<p>Caso retorne a versão do Yarn (acima de 1.0, abaixo de 2.0), a instalação ocorreu com sucesso.</p>
 
 <h2> Expo </h2>
-Para instalar o Expo é bem simples e o passo é o mesmo nos 3 sistemas operacionais.
+<p>Para instalar o Expo é bem simples e o passo é o mesmo nos 3 sistemas operacionais.</p>
 
-Com o Node e Yarn instalados, abra o terminal (no Windows, sem ser como admin) e execute: <strong>yarn global add expo-cli</strong>
-Para verificar se a instalação ocorreu com sucesso, execute: <strong>expo --version</strong>
-Se retornar a versão da cli do Expo, a instalação ocorreu com sucesso.
+<p>Com o Node e Yarn instalados, abra o terminal (no Windows, sem ser como admin) e execute: <strong>yarn global add expo-cli</strong></p>
+<p>Para verificar se a instalação ocorreu com sucesso, execute: <strong>expo --version</strong></p>
+<p>Se retornar a versão da cli do Expo, a instalação ocorreu com sucesso.</p>
