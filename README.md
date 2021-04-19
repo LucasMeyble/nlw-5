@@ -17,4 +17,4 @@ Escolhido o shell, vamos começar a instalação:
 
 <strong>Get-ExecutionPolicy</strong>
 
-caso ele retorne <strong style="color: red;">Restricted</strong>
+caso ele retorne <em>Restricted</em>
