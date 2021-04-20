@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import {Button} from '../components/Button';
+import React from 'react';
+import { SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons' //-> pra instalar rode: expo install @expo/vector-icons . Isso é uma biblioteca de incones do expo
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
@@ -16,13 +16,19 @@ export function Welcome(){
                 de forma fácil 
             </ Text>
 
-            <Image source={wateringImg} style={style.image}/>
+            <Image 
+                source={wateringImg} style={style.image} resizeMode="contain"
+            />
             
             <Text style={style.subTitle}> 
                 Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
             </Text>
 
-            <Button title=">" />
+            <TouchableOpacity style={style.button} activeOpacity={0.6}>
+                <Text>
+                    <Feather name="chevron-right" style={style.buttonIcon}/>
+                </ Text>
+            </TouchableOpacity>
         </SafeAreaView>
     )
 }
@@ -32,7 +38,7 @@ const style = StyleSheet.create({
     conteiner: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around'
     },
 
     title: {
@@ -50,9 +56,24 @@ const style = StyleSheet.create({
         color: colors.heading
     },
 
+    // o Dimensions ele torna a imagens responsiva a tela que esta sendo exibida. height = altura: dimessinons.pega(janela).largura * 0.7
     image: {
-        width: 292,
-        height: 284,
+        height: Dimensions.get('window').width * 0.7,
     },
+
+    button: {
+        backgroundColor: colors.green,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 16,
+        marginBottom: 10,
+        height: 56,
+        width: 56,
+    },
+
+    buttonIcon: { 
+        fontSize: 32,
+        color: colors.white
+    }
 
 });
