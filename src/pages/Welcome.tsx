@@ -2,12 +2,18 @@ import React from 'react';
 import { View, SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons' //-> pra instalar rode: expo install @expo/vector-icons . Isso é uma biblioteca de incones do expo
 
-
+import { useNavigation } from '@react-navigation/core';
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function Welcome(){
+
+    const navigation = useNavigation();
+
+    function handleStart(){
+        navigation.navigate('UserIdentification');
+    }
 
     return(
 
@@ -27,7 +33,7 @@ export function Welcome(){
                     Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
                 </Text>
 
-                <TouchableOpacity style={style.button} activeOpacity={0.6}>
+                <TouchableOpacity style={style.button} activeOpacity={0.6} onPress={handleStart}>
                     
                     <Feather name="chevron-right" style={style.buttonIcon}/>
                     
