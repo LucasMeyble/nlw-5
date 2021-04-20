@@ -1,34 +1,38 @@
 import React from 'react';
-import { SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, SafeAreaView, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons' //-> pra instalar rode: expo install @expo/vector-icons . Isso é uma biblioteca de incones do expo
+
 
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export function Welcome(){
 
     return(
 
         <SafeAreaView style={style.conteiner}>
-            <Text style={style.title}> 
-                Gerencie {'\n'}
-                suas plantas {'\n'}
-                de forma fácil 
-            </ Text>
-
-            <Image 
-                source={wateringImg} style={style.image} resizeMode="contain"
-            />
-            
-            <Text style={style.subTitle}> 
-                Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
-            </Text>
-
-            <TouchableOpacity style={style.button} activeOpacity={0.6}>
-                <Text>
-                    <Feather name="chevron-right" style={style.buttonIcon}/>
+            <View style={style.wrapper}>
+                <Text style={style.title}> 
+                    Gerencie {'\n'}
+                    suas plantas de{'\n'}
+                    forma fácil 
                 </ Text>
-            </TouchableOpacity>
+
+                <Image 
+                    source={wateringImg} style={style.image} resizeMode="contain"
+                />
+                
+                <Text style={style.subTitle}> 
+                    Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
+                </Text>
+
+                <TouchableOpacity style={style.button} activeOpacity={0.6}>
+                    
+                    <Feather name="chevron-right" style={style.buttonIcon}/>
+                    
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }
@@ -37,23 +41,30 @@ const style = StyleSheet.create({
 
     conteiner: {
         flex: 1,
+    },
+
+    wrapper: {
+        flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        paddingHorizontal: 20
     },
 
     title: {
-        fontSize: 32,
-        fontWeight: 'bold',
+        fontSize: 28,
         textAlign: 'center',
         color: colors.heading, 
-        marginTop: 38
+        marginTop: 38,
+        fontFamily: fonts.heading,
+        lineHeight: 34
     },
 
     subTitle: {
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
-        color: colors.heading
+        color: colors.heading,
+        fontFamily: fonts.text
     },
 
     // o Dimensions ele torna a imagens responsiva a tela que esta sendo exibida. height = altura: dimessinons.pega(janela).largura * 0.7
