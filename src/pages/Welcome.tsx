@@ -20,7 +20,7 @@ export function Welcome(){
         <SafeAreaView style={style.conteiner}>
             <View style={style.wrapper}>
                 <Text style={style.title}> 
-                    Gerencie {'\n'}
+                    Gerencie{'\n'}
                     suas plantas de{'\n'}
                     forma fácil 
                 </ Text>
