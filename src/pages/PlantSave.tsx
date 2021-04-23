@@ -104,7 +104,7 @@ export function PlantSave() {
                     )
                 }
 
-                <Button 
+                <Button  
                     title="Cadastrar planta"
                     onPress={() => {}}
                 />
