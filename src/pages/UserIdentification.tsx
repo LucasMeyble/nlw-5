@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard} from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
 
@@ -29,6 +29,10 @@ export function UserIdentification(){
 
     const navigation = useNavigation();
     function handleSubmit(){
+
+        if(!name)
+            return Alert.alert(' Me diz como chamar você? ')
+
         navigation.navigate('Confirmation');
     }
 
