@@ -5,6 +5,7 @@ import { Header } from '../components/Header';
 import { PlantCardPrimary } from '../components/PlantCardPrimary';
 
 import { Load } from '../components/Load';
+import { useNavigation } from '@react-navigation/core';
 
 import api from '../services/api';
 import colors from '../styles/colors';
@@ -38,6 +39,8 @@ export function PlantSelect() {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [loadingMore, setLoadingMore] = useState(false);
+
+    const navigation = useNavigation();
 
     function handleEnviromentSelected (environment: string){
         setEnviromentSelected(environment);
@@ -75,6 +78,10 @@ export function PlantSelect() {
         setLoadingMore(true);
         setPage(oldValue => oldValue + 1);
         fetchPlants();
+    }
+
+    function handlePlantSelect(plant: PlantProps){
+        navigation.navigate('PlantSave');
     }
 
     useEffect(() => {
@@ -131,7 +138,7 @@ export function PlantSelect() {
                 <FlatList data={filteredPlants}
                 keyExtractor={(item) => String(item.id)}
                 renderItem={({item})=>(
-                    <PlantCardPrimary data={item}/>
+                    <PlantCardPrimary data={item} onPress= { ()=> handlePlantSelect(item)} />
                 )}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
