@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, View, Text, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { Button } from '../components/Button';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { Button } from '../components/Button';
 
 export function UserIdentification(){
 
@@ -34,9 +34,12 @@ export function UserIdentification(){
         if(!name)
             return Alert.alert(' Me diz como chamar você? ');
 
-        AsyncStorage.setItem('@plantmanager:user', name);
-
-        navigation.navigate('Confirmation');
+        try{
+            AsyncStorage.setItem('@plantmanager:user', name);
+            navigation.navigate('Confirmation');
+        }catch{
+            Alert.alert('Não foi possivel salvar o seu nome. 😢');
+        }
     }
 
     return(
