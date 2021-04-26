@@ -29,14 +29,20 @@ export function UserIdentification(){
     }
 
     const navigation = useNavigation();
-    function handleSubmit(){
+    async function handleSubmit(){
 
         if(!name)
             return Alert.alert(' Me diz como chamar você? ');
 
         try{
-            AsyncStorage.setItem('@plantmanager:user', name);
-            navigation.navigate('Confirmation');
+            await AsyncStorage.setItem('@plantmanager:user', name);
+            navigation.navigate('Confirmation', {
+                title: 'prontinho',
+                subTitle: 'Agora vamos começar a cuidar das suas plantinhas com muiito cuidado',
+                buttonTitle: 'Começar',
+                icon: 'smile',
+                nextScreen: 'PlantSelect',
+            });
         }catch{
             Alert.alert('Não foi possivel salvar o seu nome. 😢');
         }
