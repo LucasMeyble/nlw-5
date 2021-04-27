@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView, Alert } from 'react-native';
 import { Header } from '../components/Header';
 
 import colors from '../styles/colors';
 import waterdrop from '../assets/waterdrop.png';
-import { loadPlant, PlantProps } from '../libs/storage';
+import { loadPlant, PlantProps, removePlant } from '../libs/storage';
 import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import fonts from '../styles/fonts';
@@ -15,6 +15,30 @@ export function MyPlants() {
     const [myPlants, setMyPlants] = useState<PlantProps[]>([]);
     const [loading, setLoading] = useState(true);
     const [nextWaterd, setNextWatered] = useState<string>();
+
+    function handleRemove(plant: PlantProps) {
+        Alert.alert('Remover', `Deseja remover a ${plant.name}?`, [
+            {
+                text: 'Não',
+                style: 'cancel'
+            },
+            {
+                text: 'Sim',
+                onPress: async () => {
+                    try{
+                        await removePlant(plant.id)
+
+                        setMyPlants((oldData) => (
+                            oldData.filter((item) => item.id != plant.id)
+                        ));
+                    }catch (error){
+                        Alert.alert('Não foi possivel resolver!');
+                    }
+                }
+
+            }
+        ])
+    }
 
     useEffect(() => {
         async function loadStorageData() {
@@ -40,9 +64,7 @@ export function MyPlants() {
         return <Load />
 
     return (
-        <ScrollView 
-        showsVerticalScrollIndicator={false}
-        >
+        
             <View style={styles.container}>
                 <Header/>
 
@@ -58,19 +80,24 @@ export function MyPlants() {
                     <Text style={styles.plantsTitle}>
                         Proximas regadas
                     </Text>
-
-                    <FlatList 
-                        data={myPlants}
-                        keyExtractor={(item) => String(item.id)}
-                        renderItem={({item}) => (
-                            <PlantCardSecondary data={item} />
-                        )}
+                    <ScrollView 
                         showsVerticalScrollIndicator={false}
-                        contentContainerStyle={{ flex: 1 }}
-                    />
+                    >
+                        <FlatList 
+                            data={myPlants}
+                            keyExtractor={(item) => String(item.id)}
+                            renderItem={({item}) => (
+                                <PlantCardSecondary 
+                                    data={item}
+                                    handleRemove={() => {handleRemove(item)}}
+                                />
+                            )}
+                            showsVerticalScrollIndicator={false}
+                            contentContainerStyle={{ flex: 1 }}
+                        />
+                    </ScrollView>
                 </View>
             </View>
-        </ScrollView>
 
     )
 }
