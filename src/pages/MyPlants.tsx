@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, ScrollView } from 'react-native';
 import { Header } from '../components/Header';
 
 import colors from '../styles/colors';
@@ -9,6 +9,7 @@ import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import fonts from '../styles/fonts';
 import { PlantCardSecondary } from '../components/PlantCardSecondary';
+import { Load } from '../components/Load';
 
 export function MyPlants() {
     const [myPlants, setMyPlants] = useState<PlantProps[]>([]);
@@ -35,34 +36,42 @@ export function MyPlants() {
         loadStorageData();
     }, [])
 
+    if(loading)
+        return <Load />
+
     return (
-        <View style={styles.container}>
-            <Header/>
+        <ScrollView 
+        showsVerticalScrollIndicator={false}
+        >
+            <View style={styles.container}>
+                <Header/>
 
-            <View style={styles.spotlight}>
-                <Image source={waterdrop} style={styles.spotlightImage}/>
+                <View style={styles.spotlight}>
+                    <Image source={waterdrop} style={styles.spotlightImage}/>
 
-                <Text style={styles.spotlightText}>
-                    {nextWaterd}
-                </Text>
+                    <Text style={styles.spotlightText}>
+                        {nextWaterd}
+                    </Text>
+                </View>
+
+                <View style={styles.plants}>
+                    <Text style={styles.plantsTitle}>
+                        Proximas regadas
+                    </Text>
+
+                    <FlatList 
+                        data={myPlants}
+                        keyExtractor={(item) => String(item.id)}
+                        renderItem={({item}) => (
+                            <PlantCardSecondary data={item} />
+                        )}
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ flex: 1 }}
+                    />
+                </View>
             </View>
+        </ScrollView>
 
-            <View style={styles.plants}>
-                <Text style={styles.plantsTitle}>
-                    Proximas regadas
-                </Text>
-
-                <FlatList 
-                    data={myPlants}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={({item}) => (
-                        <PlantCardSecondary data={item} />
-                    )}
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ flex: 1 }}
-                />
-            </View>
-        </View>
     )
 }
 
