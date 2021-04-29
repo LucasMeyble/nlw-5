@@ -49,3 +49,8 @@ Escolhido o shell, vamos começar a instalação:
 <p>Com o Node e Yarn instalados, abra o terminal (no Windows, sem ser como admin) e execute: <strong>yarn global add expo-cli</strong></p>
 <p>Para verificar se a instalação ocorreu com sucesso, execute: <strong>expo --version</strong></p>
 <p>Se retornar a versão da cli do Expo, a instalação ocorreu com sucesso.</p>
+
+<h2>Codigos para starta a aplicação</h2>
+<p>expo start</p>  
+<p>codigo para iniciar a api fake</p>
+<p>json-server ./src/services/server.json --host 10.0.0.70 --port 3333 --dalay 700</p>
